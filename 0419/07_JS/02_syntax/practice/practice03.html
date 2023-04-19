@@ -27,16 +27,20 @@
       email: 'my@mail.com',
     }
 
-    const username = data.username
-    const password = data.password
-    const email = data.email
+    // const username = data.username
+    // const password = data.password
+    // const email = data.email
+
+
+    const {username, password, email} =  data
 
     console.log(username, password, email)
 
 
     // 2. Rest operator를 활용해 아래 코드를 리팩토링 하시오.
-    function addNumbers(a, b, c, d, e) {
-      const numbers = [a, b, c, d, e];
+    // -> SpreadArgs사용
+    function addNumbers(...numbers) {
+      // const numbers = [a, b, c, d, e];
       return numbers.reduce((sum, number) => {
         return sum + number
       }, 0)
@@ -50,12 +54,24 @@
     const favoriteColors = ['navy', 'black', 'gold', 'white']
     const palette = defaultColors.concat(favoriteColors);
 
+    // 두 배열의 값을 언패킹해서 새 리스트에 넣음
+    const palette2 = [...defaultColors, ...favoriteColors]
+
+    console.log(palette2)
+
     // 3-2. Spread operator를 활용해 아래 코드를 리팩토링 하시오.
     const info1 = { name: 'Tom', age: 30 }
     const info2 = { isMarried: true, balance: 3000 }
     const fullInfo = Object.assign(info1, info2)
 
     console.log(fullInfo)
+
+    // 두 객체의 값을 언패킹해서 새 객체에 넣음
+    // 바꾸고 싶은 값이 있으면 마지막에 따로 지정해주면 됨
+    const fullInfo2 = {...info1, ...info2, isMarried:false}
+
+    console.log(fullInfo2)
+
   </script>
 </body>
 

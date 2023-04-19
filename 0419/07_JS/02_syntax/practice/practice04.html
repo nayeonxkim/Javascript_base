@@ -36,14 +36,51 @@
     ]
 
     // solution 함수 완성
+    // 최대이동가능거리, 총 정류장 수, 충전소 개수, 충전소 정보
     function solution(K, N, M, chargers) {
+      console.log(K, N, M, chargers)
+
+      // 최대 이동가능 거리에서 출발
+      let now = K
+      // 총 충전횟수
+      let cnt = 0
+      // 마지막 충전위치
+      let charge = 0
+
+      const station = []
+      for (let i = 0; i < N+1; i++) {
+        if (chargers.includes(i)) {
+          station.push(true)      
+        } else {
+          station.push(false)
+      }
+
+      console.log(station)
+      
+      while (now < N) {
+        if (station[now]) {
+          cnt++
+          charge = now
+          now += K
+        } else {
+          now -= 1
+        } 
+      
+        if (now === charge) {
+          cnt = 0
+          break
+        }
+      }
+
+      console.log(`#${cnt}`)
 
     }
 
     for (const input of inputs) {
       solution(...input)
     }
-  </script>
+
+    </script>
 </body>
 
 </html>
