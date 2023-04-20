@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS DOM</title>
+</head>
+<style>
+  .red {
+    color: red;
+  }
+
+  .big {
+    font-size: 32px;
+  }
+
+  .small {
+    font-size: 12px;
+  }
+
+</style>
+<body>
+  <h1>selector test</h1>
+
+  <button id="event-button">작아져라!</button>
+
+  <ul id="list">
+    <li class="red">apple</li>
+    <li>orange</li>
+    <li id="banana">banana</li>
+    <li>grape</li>
+    <li class="red">strawberry</li>
+  </ul>
+
+<script>
+  // 마지막에 망고 추가
+  const mango = document.createElement('li')
+  mango.innerText = '망고'
+
+  const ul = document.querySelector('#list')
+  ul.appendChild(mango)
+
+  // apple위에 파인애플 추가
+
+  const pineapple = document.createElement('li')
+  pineapple.innerText = '파인애플'
+
+  ul.prepend(pineapple)
+
+
+  // orange와 banana사이에 키위 추가
+  const kiwi = document.createElement('li')
+  kiwi.innerText = '키위'
+
+  const banana = document.querySelector('#banana')
+
+  ul.insertBefore(kiwi, banana)
+
+  // class가 red인 노드 전부 삭제
+  const reds = document.querySelectorAll('.red')
+
+  reds.forEach(element => {
+    element.remove()
+  });
+
+  // 모든 li태그의 글자크기 키우기
+  const liTags = document.querySelectorAll('li')
+
+  // liTags.forEach(element => {
+  //   element.classList.add('big')
+  // });
+
+  // 버튼 누르면 이벤트 실행
+  const button = document.querySelector('#event-button')
+
+  button.addEventListener('click', () => {
+    changeFont()
+  })
+
+  function changeFont() {
+    const liTags = document.querySelectorAll('li')
+
+    liTags.classList.add('big')
+  }
+
+</script>
+
+
+</body>
+</html>

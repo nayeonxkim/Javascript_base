@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <script>
+    // div#app 요소 선택
+    const div = document.querySelector('#app')
+    
+    // h1 태그를 createElement 로 생성
+    const h1 = document.createElement('h1')
+
+    // 생성한 h1태그의 내용을 '오늘의 Todo' 로 설정
+    h1.innerText = '오늘의 Todo'
+
+    // ul, li 태그들을 생성 및 내용 추가
+    let todoList = ['가글하기', '공부하기', '휴식하기', '곽은정수완 해치우기']
+    let studyList = ['JS 공부하기', 'DJango 공부하기', 'DRF 공부하기', '과목평가 준비하기', '토이프로젝트', '영어 공부', '자격증 공부', 'CS 공부', '알고리즘 문제풀기', '자소서 쓰기']  
+    
+    const ul = document.createElement('ul')
+    todoList.forEach(element => {
+      const li = document.createElement('li')
+      li.innerText = element
+      ul.appendChild(li)
+    });
+
+    const ul2 = document.createElement('ul')
+    studyList.forEach(element => {
+      const li2 = document.createElement('li')
+      li2.innerText = element
+      ul2.appendChild(li2)      
+    });
+
+    // 각 태그들을 적절하기 div#app 요소에 자식요소로 추가. (#app > ul > li)
+    div.appendChild(h1)
+    div.appendChild(ul)
+
+    const study = document.querySelector('#app > ul > li:nth-child(2)')
+    study.appendChild(ul2)
+    
+   
+
+  </script>
+</body>
+
+</html>
