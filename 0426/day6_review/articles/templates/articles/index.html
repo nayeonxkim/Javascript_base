@@ -13,8 +13,10 @@
     <p>글 번호 : {{ article.pk }}</p>
     <p>제목 : {{ article.title }}</p>
     <p>내용 : {{ article.content }}</p>
+
+
     <div>
-      <form action="{% url 'articles:likes' article.pk %}" method="POST">
+      <form class="like-forms" data-article-id="{{ article.pk }}">
         {% csrf_token %}
         {% if request.user in article.like_users.all %}
           <input type="submit" value="좋아요 취소">
@@ -23,7 +25,42 @@
         {% endif %}
       </form>
     </div>
+
+
     <a href="{% url 'articles:detail' article.pk %}">상세 페이지</a>
     <hr>
   {% endfor %}
 {% endblock content %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  const forms = document.querySelectorAll('.like-forms')
+  forms.forEach(form => {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault()
+      const articleId = event.target.dataset.articleId
+      const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+
+      axios({
+        method :'post',
+        url : `/articles/${articleId}/likes/`,
+        headers: {'X-CSRFToken': csrftoken},
+      })
+      .then((response) => {
+        con
+      
+      
+      })
+    })
+  });
+
+
+
+
+</script>
+
+{% endblock script %}
+
+
+
