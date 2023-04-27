@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- vue 인스턴스의 데이터 안의 정보(messag변수)를 DOM에서 보여줌 -->
+        <p>{{ message }}</p>
+
+    </div>
+    <!-- CDN으로 vue 모델(클래스)을 가져옴 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+
+    <!-- vue의 인스턴스 생성 -->
+    <script>
+        const app = new Vue({
+            // 특정 element(DOM)를 선정하여 해당 요소 내부를 vue로 다룬다.
+            el : '#app',
+            data :{
+                message : 'Hello, World!'
+            }
+        
+        
+        })
+
+
+    </script>
+
+
+</body>
+</html>
